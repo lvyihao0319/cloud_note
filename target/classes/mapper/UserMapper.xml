@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.lyh.cloud_note.dao.UserDao">
+
+	<select id="findByName"
+		parameterType="string"
+		resultType="cn.lyh.cloud_note.entity.User">
+		select * from cn_user 
+			where cn_user_name=#{name}
+	</select>
+	
+	<insert id="save"
+		parameterType="cn.lyh.cloud_note.entity.User">
+		insert into cn_user values(
+			#{cn_user_id},
+			#{cn_user_name},
+			#{cn_user_password},
+			#{cn_user_token},
+			#{cn_user_desc}
+		)
+	</insert>
+	<!-- 
+	<update id="update"
+		parameterType="com.tarena.entity.User">
+		update cn_user set
+			cn_user_name=#{cn_user_name},
+			cn_user_password=#{cn_user_password},
+			cn_user_token=#{cn_user_token},
+			cn_user_desc=#{cn_user_desc}
+		where cn_user_id=#{cn_user_id}
+	</update>
+	 -->
+</mapper>
